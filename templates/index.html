@@ -208,38 +208,88 @@
                 </div>
                 <div style="height: 100px;"></div>
 
-                <div class="slider" reverse="true" style="
-                --width: 100px;
-                --height: 100px;
-                --quantity: 13;
-                ">
+                <div class="slider" style="--width: 100px; --height: 100px; --quantity: 13;">
                     <div class="list">
-                        <div class="item" style="--position: 1"><img
-                                src="{{ url_for('static', filename='images/html.png') }}" alt=""></div>
-                        <div class="item" style="--position: 2"><img
-                                src="{{ url_for('static', filename='images/css.png') }}" alt=""></div>
-                        <div class="item" style="--position: 3"><img
-                                src="{{ url_for('static', filename='images/js.webp') }}" alt=""></div>
-                        <div class="item" style="--position: 4"><img
-                                src="{{ url_for('static', filename='js/images/nextjs.webp') }}" alt=""></div>
-                        <div class="item" style="--position: 5"><img
-                                src="{{ url_for('static', filename='images/tailwind.png') }}" alt=""></div>
-                        <div class="item" style="--position: 6"><img
-                                src="{{ url_for('static', filename='images/python.png') }}" alt=""></div>
-                        <div class="item" style="--position: 7"><img
-                                src="{{ url_for('static', filename='images/flask-new.png') }}" alt=""></div>
-                        <div class="item" style="--position: 8"><img
-                                src="{{ url_for('static', filename='images/php-new.png') }}" alt=""></div>
-                        <div class="item" style="--position: 9"><img
-                                src="{{ url_for('static', filename='images/c-new.png') }}" alt=""></div>
-                        <div class="item" style="--position: 10"><img
-                                src="{{ url_for('static', filename='images/csharp-new.png') }}" alt=""></div>
-                        <div class="item" style="--position: 11"><img
-                                src="{{ url_for('static', filename='images/flutter-new.png') }}" alt=""></div>
-                        <div class="item" style="--position: 12"><img
-                                src="{{ url_for('static', filename='images/mysql.webp') }}" alt=""></div>
-                        <div class="item" style="--position: 13"><img
-                                src="{{ url_for('static', filename='images/mongodb.webp') }}" alt=""></div>
+                        <!-- First set of items -->
+                        <div class="item" style="--position: 1">
+                            <div style="width: 80px; height: 80px; background: #E34F26; border-radius: 10px; display: flex; align-items: center; justify-content: center; color: white; font-weight: bold;">HTML</div>
+                        </div>
+                        <div class="item" style="--position: 2">
+                            <div style="width: 80px; height: 80px; background: #1572B6; border-radius: 10px; display: flex; align-items: center; justify-content: center; color: white; font-weight: bold;">CSS</div>
+                        </div>
+                        <div class="item" style="--position: 3">
+                            <div style="width: 80px; height: 80px; background: #F7DF1E; border-radius: 10px; display: flex; align-items: center; justify-content: center; color: black; font-weight: bold;">JS</div>
+                        </div>
+                        <div class="item" style="--position: 4">
+                            <div style="width: 80px; height: 80px; background: #000000; border-radius: 10px; display: flex; align-items: center; justify-content: center; color: white; font-weight: bold;">Next</div>
+                        </div>
+                        <div class="item" style="--position: 5">
+                            <div style="width: 80px; height: 80px; background: #38B2AC; border-radius: 10px; display: flex; align-items: center; justify-content: center; color: white; font-weight: bold;">TW</div>
+                        </div>
+                        <div class="item" style="--position: 6">
+                            <div style="width: 80px; height: 80px; background: #3776AB; border-radius: 10px; display: flex; align-items: center; justify-content: center; color: white; font-weight: bold;">PY</div>
+                        </div>
+                        <div class="item" style="--position: 7">
+                            <div style="width: 80px; height: 80px; background: #000000; border-radius: 10px; display: flex; align-items: center; justify-content: center; color: white; font-weight: bold;">Flask</div>
+                        </div>
+                        <div class="item" style="--position: 8">
+                            <div style="width: 80px; height: 80px; background: #777BB4; border-radius: 10px; display: flex; align-items: center; justify-content: center; color: white; font-weight: bold;">PHP</div>
+                        </div>
+                        <div class="item" style="--position: 9">
+                            <div style="width: 80px; height: 80px; background: #A8B9CC; border-radius: 10px; display: flex; align-items: center; justify-content: center; color: black; font-weight: bold;">C</div>
+                        </div>
+                        <div class="item" style="--position: 10">
+                            <div style="width: 80px; height: 80px; background: #239120; border-radius: 10px; display: flex; align-items: center; justify-content: center; color: white; font-weight: bold;">C#</div>
+                        </div>
+                        <div class="item" style="--position: 11">
+                            <div style="width: 80px; height: 80px; background: #02569B; border-radius: 10px; display: flex; align-items: center; justify-content: center; color: white; font-weight: bold;">Flutter</div>
+                        </div>
+                        <div class="item" style="--position: 12">
+                            <div style="width: 80px; height: 80px; background: #4479A1; border-radius: 10px; display: flex; align-items: center; justify-content: center; color: white; font-weight: bold;">MySQL</div>
+                        </div>
+                        <div class="item" style="--position: 13">
+                            <div style="width: 80px; height: 80px; background: #47A248; border-radius: 10px; display: flex; align-items: center; justify-content: center; color: white; font-weight: bold;">Mongo</div>
+                        </div>
+                        <!-- Duplicate set for seamless loop -->
+                        <div class="item" style="--position: 1">
+                            <div style="width: 80px; height: 80px; background: #E34F26; border-radius: 10px; display: flex; align-items: center; justify-content: center; color: white; font-weight: bold;">HTML</div>
+                        </div>
+                        <div class="item" style="--position: 2">
+                            <div style="width: 80px; height: 80px; background: #1572B6; border-radius: 10px; display: flex; align-items: center; justify-content: center; color: white; font-weight: bold;">CSS</div>
+                        </div>
+                        <div class="item" style="--position: 3">
+                            <div style="width: 80px; height: 80px; background: #F7DF1E; border-radius: 10px; display: flex; align-items: center; justify-content: center; color: black; font-weight: bold;">JS</div>
+                        </div>
+                        <div class="item" style="--position: 4">
+                            <div style="width: 80px; height: 80px; background: #000000; border-radius: 10px; display: flex; align-items: center; justify-content: center; color: white; font-weight: bold;">Next</div>
+                        </div>
+                        <div class="item" style="--position: 5">
+                            <div style="width: 80px; height: 80px; background: #38B2AC; border-radius: 10px; display: flex; align-items: center; justify-content: center; color: white; font-weight: bold;">TW</div>
+                        </div>
+                        <div class="item" style="--position: 6">
+                            <div style="width: 80px; height: 80px; background: #3776AB; border-radius: 10px; display: flex; align-items: center; justify-content: center; color: white; font-weight: bold;">PY</div>
+                        </div>
+                        <div class="item" style="--position: 7">
+                            <div style="width: 80px; height: 80px; background: #000000; border-radius: 10px; display: flex; align-items: center; justify-content: center; color: white; font-weight: bold;">Flask</div>
+                        </div>
+                        <div class="item" style="--position: 8">
+                            <div style="width: 80px; height: 80px; background: #777BB4; border-radius: 10px; display: flex; align-items: center; justify-content: center; color: white; font-weight: bold;">PHP</div>
+                        </div>
+                        <div class="item" style="--position: 9">
+                            <div style="width: 80px; height: 80px; background: #A8B9CC; border-radius: 10px; display: flex; align-items: center; justify-content: center; color: black; font-weight: bold;">C</div>
+                        </div>
+                        <div class="item" style="--position: 10">
+                            <div style="width: 80px; height: 80px; background: #239120; border-radius: 10px; display: flex; align-items: center; justify-content: center; color: white; font-weight: bold;">C#</div>
+                        </div>
+                        <div class="item" style="--position: 11">
+                            <div style="width: 80px; height: 80px; background: #02569B; border-radius: 10px; display: flex; align-items: center; justify-content: center; color: white; font-weight: bold;">Flutter</div>
+                        </div>
+                        <div class="item" style="--position: 12">
+                            <div style="width: 80px; height: 80px; background: #4479A1; border-radius: 10px; display: flex; align-items: center; justify-content: center; color: white; font-weight: bold;">MySQL</div>
+                        </div>
+                        <div class="item" style="--position: 13">
+                            <div style="width: 80px; height: 80px; background: #47A248; border-radius: 10px; display: flex; align-items: center; justify-content: center; color: white; font-weight: bold;">Mongo</div>
+                        </div>
                     </div>
                 </div>
             </div>
