@@ -32,7 +32,7 @@ html{
 
 header{
     display: flex;
-    position: absolute;
+    position: fixed;
     top: 0;
     right: 0;
     left: 0;
@@ -85,27 +85,7 @@ header ul a:hover{
 }
 
 .box-icons{
-    display: flex;
-    gap: 40px;
-}
-
-.box-icons p{
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-size: 20px;
-    width: 30px;
-    height: 30px;
-    border: 2px solid #72a1de;
-    border-radius: 50%;
-    cursor: pointer;
-    transition: 0.5s;
-}
-
-.box-icons p:hover{
-    background-color: #72a1de;
-    color: black;
-    box-shadow: 0 0 15px #72a1de;
+    display: none;
 }
 
 .blackhole-box{
@@ -260,15 +240,15 @@ header ul a:hover{
     align-items: center;
     flex-direction: column;
     width: 80%;
-    margin-top: 100px;
+    margin-top: 50px;
 }
 
 .info-cards {
     display: grid;
     grid-template-columns: auto auto auto;
-    gap: 20px;
+    gap: 15px;
     width: 100%;
-    margin-top: 30px;
+    margin-top: 20px;
 }
 
 .card {
@@ -277,10 +257,11 @@ header ul a:hover{
     flex-direction: column;
     padding: 20px;
     width: auto;
-    height: 40vh;
+    height: auto;
+    min-height: 300px;
     overflow: hidden;
-    border: 1px solid gray;
-    background-color: #080020b7;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    background-color: rgba(8, 0, 32, 0.8);
     border-radius: 20px;
     transition: 0.5s;
 }
@@ -288,18 +269,19 @@ header ul a:hover{
 .card h1 {
     margin: 0 0 15px 0;
     font-size: 25px;
-    color: lightgray;
+    color: white;
     z-index: 2;
     position: relative;
 }
 
 .card p {
-    color: gray;
-    font-size: 13px;
-    line-height: 20px;
+    color: white;
+    font-size: 15px;
+    line-height: 24px;
     margin-bottom: auto;
     z-index: 2;
     position: relative;
+    opacity: 0.9;
 }
 
 .card img {
@@ -614,79 +596,324 @@ header ul a:hover{
 
 
   /* CONTACT SECTION */
-.contact-section{
-    width: 80%;
-    height: 100vh;
+.contact-section {
+    width: 100%;
+    min-height: 100vh;
     display: flex;
-    justify-content: center;
-    gap: 10%;
+    flex-direction: column;
     align-items: center;
+    padding: 80px 20px;
     position: relative;
 }
 
-.contact-section h1{
-    font-size: 5vh;
-    position: absolute;
-    top: 10%;
-    left: 40%;
+.contact-section .section-title {
+    font-size: 2.5rem;
+    color: #fff;
+    margin-bottom: 50px;
+    text-align: center;
 }
 
+/* Fix the contact container layout */
+.contact-container {
+    display: flex;
+    gap: 40px;
+    width: 90%;
+    max-width: 1200px;
+    margin: 0 auto;
+    align-items: stretch;
+    justify-content: space-between;
+}
+
+/* Add proper social box styles */
 .social-box {
+    flex: 1;
+    background: rgba(8, 0, 32, 0.8);
+    padding: 40px;
+    border-radius: 20px;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    backdrop-filter: blur(10px);
+    box-shadow: 0 0 20px rgba(114, 161, 222, 0.2);
+    display: flex;
+    flex-direction: column;
+    gap: 25px;
+    height: auto;
+    position: sticky;
+    top: 100px;
+}
+
+.social-box h2 {
+    color: #fff;
+    font-size: 1.8rem;
+    margin-bottom: 10px;
+    font-weight: 600;
+}
+
+.social-box a {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    color: #fff;
+    text-decoration: none;
+    font-size: 1.1rem;
+    padding: 10px 0;
+    transition: all 0.3s ease;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.social-box a:last-child {
+    border-bottom: none;
+}
+
+.social-box a:hover {
+    color: #72a1de;
+    transform: translateX(5px);
+}
+
+.social-box i {
+    font-size: 1.5rem;
+    color: #72a1de;
+}
+
+.contact-box {
+    flex: 1.5;
+    background: rgba(8, 0, 32, 0.8);
+    padding: 40px;
+    border-radius: 20px;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    backdrop-filter: blur(10px);
+    box-shadow: 0 0 20px rgba(114, 161, 222, 0.2);
+}
+
+.contact-box form {
     display: flex;
     flex-direction: column;
     gap: 25px;
 }
 
-.social-box a{
-    color: lightgray;
-    text-decoration: none;
-    font-size: 20px;
-    text-wrap: nowrap;
+.input-group {
+    width: 100%;
+    margin-bottom: 10px;
 }
 
-.social-box i{
-    color: #7668ff;
-    font-size: 30px;
-    margin-right: 10px;
+.input-group label {
+    display: block;
+    color: #fff;
+    margin-bottom: 8px;
+    font-size: 1rem;
+    font-weight: 500;
 }
 
-.social-icons a i{
-    color: white;
-    margin-top: 40px;
-}
-
-.contact-box p{
-    max-width: 400px;
-    margin-top: 30px;
-    margin-bottom: 5px;
-} 
-
-.contact-box input{
-    padding: 7.5px 30px;
-    background-color: lightgray;
-    width: 80%;
-    height: 25px;
-    border: none;
-    outline : none;
-    border-top-right-radius: 10px;
-    border-bottom-right-radius: 10px;
-}
-
-.contact-box button{
-    margin-top: 30px;
-    color: white;
-    padding: 15px 35px;
+.input-group input,
+.input-group textarea {
+    width: 100%;
+    padding: 15px;
+    background: rgba(255, 255, 255, 0.1);
+    border: 1px solid rgba(255, 255, 255, 0.2);
     border-radius: 10px;
-    border: 1px solid #72a1de81;
-    background-color: #2200493d;
-    box-shadow: 0 0 5px #72a1de81;
-    cursor: pointer;
-    transition: 0.3s;
+    color: #fff;
+    font-size: 1rem;
+    transition: all 0.3s ease;
+    margin-bottom: 5px;
 }
 
-.contact-box button:hover{
-    opacity: 0.8;
-    box-shadow: 0 0 15px #72a1de81;
+.input-group input::placeholder,
+.input-group textarea::placeholder {
+    color: rgba(255, 255, 255, 0.6);
+}
+
+.input-group input:focus,
+.input-group textarea:focus {
+    outline: none;
+    border-color: #72a1de;
+    background: rgba(255, 255, 255, 0.15);
+    box-shadow: 0 0 10px rgba(114, 161, 222, 0.2);
+}
+
+.input-group input.error,
+.input-group textarea.error {
+    border-color: #f44336;
+    box-shadow: 0 0 10px rgba(244, 67, 54, 0.2);
+}
+
+.input-group .error-message {
+    color: #f44336;
+    font-size: 0.85rem;
+    margin-top: 5px;
+    min-height: 17px;
+}
+
+.input-group textarea {
+    resize: vertical;
+    min-height: 150px;
+    line-height: 1.5;
+}
+
+.contact-box button {
+    background: #72a1de;
+    color: #fff;
+    border: none;
+    padding: 15px 30px;
+    border-radius: 10px;
+    font-size: 1.1rem;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    transition: all 0.3s ease;
+    width: fit-content;
+    margin-top: 10px;
+}
+
+.contact-box button:hover {
+    background: #5a8ac7;
+    transform: translateY(-2px);
+    box-shadow: 0 5px 15px rgba(114, 161, 222, 0.3);
+}
+
+.contact-box button:disabled {
+    background: #4a6a8c;
+    cursor: not-allowed;
+    transform: none;
+    box-shadow: none;
+}
+
+.form-status {
+    margin-top: 20px;
+    width: 100%;
+}
+
+.form-status .success {
+    color: #4CAF50;
+    padding: 15px;
+    background: rgba(76, 175, 80, 0.1);
+    border-radius: 10px;
+    border: 1px solid #4CAF50;
+    font-size: 1rem;
+    text-align: center;
+}
+
+.form-status .error {
+    color: #f44336;
+    padding: 15px;
+    background: rgba(244, 67, 54, 0.1);
+    border-radius: 10px;
+    border: 1px solid #f44336;
+    font-size: 1rem;
+    text-align: center;
+}
+
+@media (max-width: 992px) {
+    .contact-container {
+        flex-direction: column;
+        width: 95%;
+    }
+
+    .social-box,
+    .contact-box {
+        width: 100%;
+    }
+
+    .contact-section .section-title {
+        font-size: 2rem;
+        margin-bottom: 30px;
+    }
+}
+
+@media (max-width: 576px) {
+    .contact-section {
+        padding: 60px 15px;
+    }
+
+    .contact-section .section-title {
+        font-size: 1.8rem;
+    }
+
+    .social-box,
+    .contact-box {
+        padding: 25px;
+    }
+
+    .social-box h2 {
+        color: #fff;
+        font-size: 1.8rem;
+        margin-bottom: 10px;
+        font-weight: 600;
+    }
+
+    .social-box a {
+        display: flex;
+        align-items: center;
+        gap: 15px;
+        color: #fff;
+        text-decoration: none;
+        font-size: 1.1rem;
+        padding: 10px 0;
+        transition: all 0.3s ease;
+        border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    }
+
+    .social-box a:last-child {
+        border-bottom: none;
+    }
+
+    .social-box a:hover {
+        color: #72a1de;
+        transform: translateX(5px);
+    }
+
+    .social-box i {
+        font-size: 1.5rem;
+        color: #72a1de;
+    }
+
+    .input-group input.error,
+    .input-group textarea.error {
+        border-color: #f44336;
+        box-shadow: 0 0 10px rgba(244, 67, 54, 0.2);
+    }
+    font-size: 1rem;
+    text-align: center;
+}
+
+@media (max-width: 576px) {
+    .contact-section {
+        padding: 60px 15px;
+    }
+
+    .contact-section .section-title {
+        font-size: 1.8rem;
+    }
+
+    .social-box,
+    .contact-box {
+        padding: 25px;
+    }
+
+    .social-box h2 {
+        font-size: 1.5rem;
+    }
+
+    .social-box a {
+        font-size: 1rem;
+    }
+
+    .contact-box button {
+        width: 100%;
+    }
+}
+
+.footer{
+    display: flex;
+    justify-content: space-between;
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    left: 0;
+    height: 70px;
+    background-color: rgba(255, 255, 255, 0.121);
+    z-index: 999;
+    padding: 0 3rem;
 }
 
 .footer{
@@ -922,8 +1149,22 @@ header ul a:hover{
         scale: 0.8;
     }
 
-    .contact-section .section-title {
-        left: 30%;
+    .contact-section {
+        flex-direction: column;
+        gap: 30px;
+        padding: 20px;
+    }
+
+    .social-box, .contact-box {
+        width: 100%;
+        max-width: 500px;
+    }
+
+    .contact-section h1 {
+        position: relative;
+        left: 0;
+        text-align: center;
+        margin-bottom: 20px;
     }
 }
 
@@ -1075,10 +1316,15 @@ header ul a:hover{
         bottom: 25%;
     }
 
-    .contact-section{
-        flex-direction: column;
-        margin-top: 100px;
-        margin-bottom: 50px;
+    .contact-section {
+        width: 90%;
+        min-height: auto;
+        padding: 20px;
+    }
+
+    .social-box, .contact-box {
+        width: 100%;
+        padding: 20px;
     }
 
     .footer{
