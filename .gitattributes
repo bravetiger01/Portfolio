@@ -1,3 +1,0 @@
-*.mp4 filter=lfs diff=lfs merge=lfs -text
-static/videos/WhatsApp-Clone.mp4 filter=lfs diff=lfs merge=lfs -text
-static/videos/Kisansahayak.mp4 filter=lfs diff=lfs merge=lfs -text
