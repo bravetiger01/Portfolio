@@ -49,6 +49,9 @@ document.addEventListener('DOMContentLoaded', function() {
         const submitBtn = document.getElementById('submitBtn');
         const formStatus = document.getElementById('formStatus');
 
+        // Initialize EmailJS with the Public Key from config.js
+        emailjs.init(emailjsConfig.PUBLIC_KEY);
+
         // Validate name
         nameInput.addEventListener('blur', function() {
             if (nameInput.value.trim() === '') {
@@ -89,7 +92,7 @@ document.addEventListener('DOMContentLoaded', function() {
             }
         });
 
-        // Form submission
+        // Form submission using EmailJS
         contactForm.addEventListener('submit', async function(e) {
             e.preventDefault();
 
@@ -142,14 +145,32 @@ document.addEventListener('DOMContentLoaded', function() {
             formStatus.innerHTML = '';
 
             try {
-                const response = await fetch('/contact', {
-                    method: 'POST',
-                    body: new FormData(contactForm),
-                    signal: AbortSignal.timeout(10000) // 10-second timeout
-                });
-                const data = await response.json();
+                // Get current time in IST (Indian Standard Time)
+                const currentDate = new Date();
+                const istOffset = 5.5 * 60 * 60 * 1000; // 5 hours 30 minutes in milliseconds
+                const istDate = new Date(currentDate.getTime() + istOffset);
+                const timeString = istDate.toISOString().replace('T', ' ').substring(0, 19); // Format: YYYY-MM-DD HH:mm:ss
 
-                if (data.success) {
+                // EmailJS configuration
+                const templateParams = {
+                    name: nameInput.value.trim(), // Matches {{name}}
+                    from_email: emailInput.value.trim(), // Matches {{from_email}}
+                    time: timeString, // Matches {{time}}
+                    message: messageInput.value.trim() // Matches {{message}}
+                };
+
+                // Log templateParams for debugging
+                console.log('Sending templateParams:', templateParams);
+
+                // Send email using EmailJS
+                const response = await emailjs.send(
+                    emailjsConfig.SERVICE_ID,
+                    emailjsConfig.TEMPLATE_ID,
+                    templateParams,
+                    emailjsConfig.PUBLIC_KEY
+                );
+
+                if (response.status === 200) {
                     formStatus.innerHTML = '<div class="success">Message sent successfully! I\'ll get back to you soon.</div>';
                     contactForm.reset();
                     nameInput.classList.remove('error');
@@ -159,7 +180,7 @@ document.addEventListener('DOMContentLoaded', function() {
                     emailError.textContent = '';
                     messageError.textContent = '';
                 } else {
-                    formStatus.innerHTML = `<div class="error">${data.message || 'Failed to send message. Please try again.'}</div>`;
+                    formStatus.innerHTML = '<div class="error">Failed to send message. Please try again.</div>';
                 }
             } catch (error) {
                 formStatus.innerHTML = '<div class="error">An error occurred. Please try again later or contact me directly via email.</div>';

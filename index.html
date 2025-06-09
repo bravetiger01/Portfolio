@@ -58,7 +58,7 @@
         </div>
 
         <section class="hero ">
-            <div class="hero-info autoBlur" data-aos="fade-right" data-aos-duration="1000">
+            <div class="hero-info" data-aos="fade-right" data-aos-duration="1000">
                 <div class="hero-info-title">
                     <i class='bx bxl-sketch'></i>
                     Full Stack Developer
@@ -73,15 +73,14 @@
                 <button><i class='bx bx-send'></i> Contact Me</button>
             </div>
 
-            <div class="skills-video-box ">
-                <video class="skills-video autoBlur" autoplay loop muted playsinline preload="auto"
-                    src="videos/hero-video.mp4"></video>
+            <div class="skills-video-box " >
+                <video class="skills-video" autoplay loop muted plays-inline src="videos/hero-video.mp4"></video>
             </div>
 
             <div class="scroll-down"></div>
         </section>
 
-        <seaction class="info-section" id="about">
+        <section class="info-section" id="about">
             <h1 class="section-title autoDisplay">About Me 👋</h1>
             <div class="info-cards">
                 <div class="card">
@@ -118,7 +117,7 @@
                     <img src="images/grid4.png" alt="">
                 </div>
             </div>
-        </seaction>
+        </section>
 
 
         <section class="my-project" id="projects">
@@ -156,7 +155,7 @@
             <div class="project-card">
                 <div class="project-vidbox autoBlur">
                     <video loop id="projectVideo3" preload="metadata" loading="lazy"
-                        src="{{ url_for('static', filename='videos/project3.mp4') }}"></video>
+                        src="videos/project3.mp4"></video>
                 </div>
 
                 <div class="project-info fadein-left">
@@ -212,83 +211,83 @@
                     <div class="list">
                         <!-- First set of items -->
                         <div class="item" style="--position: 1">
-                            <div style="width: 80px; height: 80px; background: #E34F26; border-radius: 10px; display: flex; align-items: center; justify-content: center; color: white; font-weight: bold;">HTML</div>
+                            <img src="images/html.png" alt="HTML">
                         </div>
                         <div class="item" style="--position: 2">
-                            <div style="width: 80px; height: 80px; background: #1572B6; border-radius: 10px; display: flex; align-items: center; justify-content: center; color: white; font-weight: bold;">CSS</div>
+                            <img src="images/css.png" alt="CSS">
                         </div>
                         <div class="item" style="--position: 3">
-                            <div style="width: 80px; height: 80px; background: #F7DF1E; border-radius: 10px; display: flex; align-items: center; justify-content: center; color: black; font-weight: bold;">JS</div>
+                            <img src="images/js.png" alt="JavaScript">
                         </div>
                         <div class="item" style="--position: 4">
-                            <div style="width: 80px; height: 80px; background: #000000; border-radius: 10px; display: flex; align-items: center; justify-content: center; color: white; font-weight: bold;">Next</div>
+                            <img src="images/nextjs.png" alt="Next.js">
                         </div>
                         <div class="item" style="--position: 5">
-                            <div style="width: 80px; height: 80px; background: #38B2AC; border-radius: 10px; display: flex; align-items: center; justify-content: center; color: white; font-weight: bold;">TW</div>
+                            <img src="images/tailwind.png" alt="Tailwind CSS">
                         </div>
                         <div class="item" style="--position: 6">
-                            <div style="width: 80px; height: 80px; background: #3776AB; border-radius: 10px; display: flex; align-items: center; justify-content: center; color: white; font-weight: bold;">PY</div>
+                            <img src="images/python.png" alt="Python">
                         </div>
                         <div class="item" style="--position: 7">
-                            <div style="width: 80px; height: 80px; background: #000000; border-radius: 10px; display: flex; align-items: center; justify-content: center; color: white; font-weight: bold;">Flask</div>
+                            <img src="images/flask-new.png" alt="Flask">
                         </div>
                         <div class="item" style="--position: 8">
-                            <div style="width: 80px; height: 80px; background: #777BB4; border-radius: 10px; display: flex; align-items: center; justify-content: center; color: white; font-weight: bold;">PHP</div>
+                            <img src="images/php-new.png" alt="PHP">
                         </div>
                         <div class="item" style="--position: 9">
-                            <div style="width: 80px; height: 80px; background: #A8B9CC; border-radius: 10px; display: flex; align-items: center; justify-content: center; color: black; font-weight: bold;">C</div>
+                            <img src="images/c-new.png" alt="C">
                         </div>
                         <div class="item" style="--position: 10">
-                            <div style="width: 80px; height: 80px; background: #239120; border-radius: 10px; display: flex; align-items: center; justify-content: center; color: white; font-weight: bold;">C#</div>
+                            <img src="images/csharp-new.png" alt="C#">
                         </div>
                         <div class="item" style="--position: 11">
-                            <div style="width: 80px; height: 80px; background: #02569B; border-radius: 10px; display: flex; align-items: center; justify-content: center; color: white; font-weight: bold;">Flutter</div>
+                            <img src="images/flutter-new.png" alt="Flutter">
                         </div>
                         <div class="item" style="--position: 12">
-                            <div style="width: 80px; height: 80px; background: #4479A1; border-radius: 10px; display: flex; align-items: center; justify-content: center; color: white; font-weight: bold;">MySQL</div>
+                            <img src="images/mysql.webp" alt="MySQL">
                         </div>
                         <div class="item" style="--position: 13">
-                            <div style="width: 80px; height: 80px; background: #47A248; border-radius: 10px; display: flex; align-items: center; justify-content: center; color: white; font-weight: bold;">Mongo</div>
+                            <img src="images/mongodb.webp" alt="MongoDB">
                         </div>
                         <!-- Duplicate set for seamless loop -->
                         <div class="item" style="--position: 1">
-                            <div style="width: 80px; height: 80px; background: #E34F26; border-radius: 10px; display: flex; align-items: center; justify-content: center; color: white; font-weight: bold;">HTML</div>
+                            <img src="images/html.png" alt="HTML">
                         </div>
                         <div class="item" style="--position: 2">
-                            <div style="width: 80px; height: 80px; background: #1572B6; border-radius: 10px; display: flex; align-items: center; justify-content: center; color: white; font-weight: bold;">CSS</div>
+                            <img src="images/css.png" alt="CSS">
                         </div>
                         <div class="item" style="--position: 3">
-                            <div style="width: 80px; height: 80px; background: #F7DF1E; border-radius: 10px; display: flex; align-items: center; justify-content: center; color: black; font-weight: bold;">JS</div>
+                            <img src="images/js.png" alt="JavaScript">
                         </div>
                         <div class="item" style="--position: 4">
-                            <div style="width: 80px; height: 80px; background: #000000; border-radius: 10px; display: flex; align-items: center; justify-content: center; color: white; font-weight: bold;">Next</div>
+                            <img src="images/nextjs.png" alt="Next.js">
                         </div>
                         <div class="item" style="--position: 5">
-                            <div style="width: 80px; height: 80px; background: #38B2AC; border-radius: 10px; display: flex; align-items: center; justify-content: center; color: white; font-weight: bold;">TW</div>
+                            <img src="images/tailwind.png" alt="Tailwind CSS">
                         </div>
                         <div class="item" style="--position: 6">
-                            <div style="width: 80px; height: 80px; background: #3776AB; border-radius: 10px; display: flex; align-items: center; justify-content: center; color: white; font-weight: bold;">PY</div>
+                            <img src="images/python.png" alt="Python">
                         </div>
                         <div class="item" style="--position: 7">
-                            <div style="width: 80px; height: 80px; background: #000000; border-radius: 10px; display: flex; align-items: center; justify-content: center; color: white; font-weight: bold;">Flask</div>
+                            <img src="images/flask-new.png" alt="Flask">
                         </div>
                         <div class="item" style="--position: 8">
-                            <div style="width: 80px; height: 80px; background: #777BB4; border-radius: 10px; display: flex; align-items: center; justify-content: center; color: white; font-weight: bold;">PHP</div>
+                            <img src="images/php-new.png" alt="PHP">
                         </div>
                         <div class="item" style="--position: 9">
-                            <div style="width: 80px; height: 80px; background: #A8B9CC; border-radius: 10px; display: flex; align-items: center; justify-content: center; color: black; font-weight: bold;">C</div>
+                            <img src="images/c-new.png" alt="C">
                         </div>
                         <div class="item" style="--position: 10">
-                            <div style="width: 80px; height: 80px; background: #239120; border-radius: 10px; display: flex; align-items: center; justify-content: center; color: white; font-weight: bold;">C#</div>
+                            <img src="images/csharp-new.png" alt="C#">
                         </div>
                         <div class="item" style="--position: 11">
-                            <div style="width: 80px; height: 80px; background: #02569B; border-radius: 10px; display: flex; align-items: center; justify-content: center; color: white; font-weight: bold;">Flutter</div>
+                            <img src="images/flutter-new.png" alt="Flutter">
                         </div>
                         <div class="item" style="--position: 12">
-                            <div style="width: 80px; height: 80px; background: #4479A1; border-radius: 10px; display: flex; align-items: center; justify-content: center; color: white; font-weight: bold;">MySQL</div>
+                            <img src="images/mysql.webp" alt="MySQL">
                         </div>
                         <div class="item" style="--position: 13">
-                            <div style="width: 80px; height: 80px; background: #47A248; border-radius: 10px; display: flex; align-items: center; justify-content: center; color: white; font-weight: bold;">Mongo</div>
+                            <img src="images/mongodb.webp" alt="MongoDB">
                         </div>
                     </div>
                 </div>
@@ -298,18 +297,10 @@
         <section class="contact-section" id="contact">
             <h1 class="section-title autoDisplay">Let's Talk 😊</h1>
             <div class="contact-container">
-                <div class="social-box autoBlur">
-                    <a href="tel:+917016443150"><i class='bx bxs-phone'></i> +91 70164 43150</a>
+                <div class="social-box">
+                    <a href="https://linktr.ee/nakuldesai" target="_blank"><i class='bx bx-link'></i> Linktree</a>
                     <a href="mailto:nakuldesai2006@gmail.com" target="_blank"><i class='bx bxl-gmail'></i>
                         nakuldesai2006@gmail.com</a>
-                    <a href="https://www.linkedin.com/in/nakul-desai-2006/" target="_blank"><i
-                            class='bx bxl-linkedin-square'></i> Nakul Desai</a>
-                    <div class="social-icons">
-                        <a href="https://www.youtube.com/@nakuldesai" target="_blank"><i class='bx bxl-youtube'></i></a>
-                        <a href="https://twitter.com/yourusername" target="_blank"><i class='bx bxl-twitter'></i></a>
-                        <a href="https://facebook.com/yourusername" target="_blank"><i
-                                class='bx bxl-facebook-circle'></i></a>
-                    </div>
                 </div>
                 <div class="contact-box">
                     <form id="contactForm" method="POST" action="{{ url_for('contact') }}">
@@ -345,8 +336,10 @@
 
 
     </div>
+    <script src="js/config.js"></script>
     <script src="js/app.js"></script>
     <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"></script>
     <script>
         AOS.init();
     </script>
