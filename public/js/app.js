@@ -37,7 +37,7 @@ closeIcon.addEventListener("click", function(){
 })
 
 
-document.addEventListener('DOMContentLoaded', function() {
+document.addEventListener('DOMContentLoaded', function () {
     const contactForm = document.getElementById('contactForm');
     if (contactForm) {
         const nameInput = document.getElementById('name');
@@ -49,11 +49,9 @@ document.addEventListener('DOMContentLoaded', function() {
         const submitBtn = document.getElementById('submitBtn');
         const formStatus = document.getElementById('formStatus');
 
-        // Initialize EmailJS with the Public Key from config.js
-        emailjs.init(emailjsConfig.PUBLIC_KEY);
 
         // Validate name
-        nameInput.addEventListener('blur', function() {
+        nameInput.addEventListener('blur', function () {
             if (nameInput.value.trim() === '') {
                 nameInput.classList.add('error');
                 nameError.textContent = 'Name is required';
@@ -64,7 +62,7 @@ document.addEventListener('DOMContentLoaded', function() {
         });
 
         // Validate email
-        emailInput.addEventListener('blur', function() {
+        emailInput.addEventListener('blur', function () {
             const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
             if (emailInput.value.trim() === '') {
                 emailInput.classList.add('error');
@@ -79,7 +77,7 @@ document.addEventListener('DOMContentLoaded', function() {
         });
 
         // Validate message
-        messageInput.addEventListener('blur', function() {
+        messageInput.addEventListener('blur', function () {
             if (messageInput.value.trim() === '') {
                 messageInput.classList.add('error');
                 messageError.textContent = 'Message is required';
@@ -92,8 +90,8 @@ document.addEventListener('DOMContentLoaded', function() {
             }
         });
 
-        // Form submission using EmailJS
-        contactForm.addEventListener('submit', async function(e) {
+        // Form submission using fetch API to backend endpoint
+        contactForm.addEventListener('submit', async function (e) {
             e.preventDefault();
 
             // Validate all fields before submission
@@ -145,32 +143,33 @@ document.addEventListener('DOMContentLoaded', function() {
             formStatus.innerHTML = '';
 
             try {
-                // Get current time in IST (Indian Standard Time)
+                // Get current time in IST
                 const currentDate = new Date();
-                const istOffset = 5.5 * 60 * 60 * 1000; // 5 hours 30 minutes in milliseconds
+                const istOffset = 5.5 * 60 * 60 * 1000; // 5 hours 30 minutes
                 const istDate = new Date(currentDate.getTime() + istOffset);
-                const timeString = istDate.toISOString().replace('T', ' ').substring(0, 19); // Format: YYYY-MM-DD HH:mm:ss
+                const timeString = istDate.toISOString().replace('T', ' ').substring(0, 19);
 
-                // EmailJS configuration
-                const templateParams = {
-                    name: nameInput.value.trim(), // Matches {{name}}
-                    from_email: emailInput.value.trim(), // Matches {{from_email}}
-                    time: timeString, // Matches {{time}}
-                    message: messageInput.value.trim() // Matches {{message}}
+                // Prepare form data
+                const formData = {
+                    name: nameInput.value.trim(),
+                    from_email: emailInput.value.trim(),
+                    message: messageInput.value.trim(),
+                    time: timeString, // Add time for EmailJS template
                 };
 
-                // Log templateParams for debugging
-                console.log('Sending templateParams:', templateParams);
+                // Send data to backend endpoint
+                const response = await fetch('/send-email', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                    body: JSON.stringify(formData),
+                });
 
-                // Send email using EmailJS
-                const response = await emailjs.send(
-                    emailjsConfig.SERVICE_ID,
-                    emailjsConfig.TEMPLATE_ID,
-                    templateParams,
-                    emailjsConfig.PUBLIC_KEY
-                );
+                const result = await response.json();
+                console.log('Response from server:', result);
 
-                if (response.status === 200) {
+                if (response.ok) {
                     formStatus.innerHTML = '<div class="success">Message sent successfully! I\'ll get back to you soon.</div>';
                     contactForm.reset();
                     nameInput.classList.remove('error');
@@ -180,7 +179,7 @@ document.addEventListener('DOMContentLoaded', function() {
                     emailError.textContent = '';
                     messageError.textContent = '';
                 } else {
-                    formStatus.innerHTML = '<div class="error">Failed to send message. Please try again.</div>';
+                    formStatus.innerHTML = `<div class="error">${result.message || 'Failed to send message. Please try again.'}</div>`;
                 }
             } catch (error) {
                 formStatus.innerHTML = '<div class="error">An error occurred. Please try again later or contact me directly via email.</div>';

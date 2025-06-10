@@ -12,8 +12,7 @@
 
 <body>
     <div class="container">
-        <video class="back-vid" autoplay loop muted playsinline preload="auto"
-            src="videos/galaxy.mp4"></video>
+        <video class="back-vid" autoplay loop muted playsinline preload="auto" src="videos/galaxy.mp4"></video>
 
 
 
@@ -53,8 +52,7 @@
         </div>
 
         <div class="blackhole-box" data-aos="fade-down" data-aos-duration="2000">
-            <video autoplay loop muted playsinline preload="auto"
-                src="videos/blackhole.mp4"></video>
+            <video autoplay loop muted playsinline preload="auto" src="videos/blackhole.mp4"></video>
         </div>
 
         <section class="hero ">
@@ -73,7 +71,7 @@
                 <button><i class='bx bx-send'></i> Contact Me</button>
             </div>
 
-            <div class="skills-video-box " >
+            <div class="skills-video-box ">
                 <video class="skills-video" autoplay loop muted plays-inline src="videos/hero-video.mp4"></video>
             </div>
 
@@ -104,8 +102,7 @@
                     <p>Organized and dependable Full Stack Web Developer with a positive attitude, skilled at managing
                         multiple priorities and taking on added responsibilities to meet team goals. Passionate about
                         leveraging technical expertise to secure an entry-level web developer position.</p>
-                    <video autoplay loop muted plays-inline
-                        src="videos/glob.mp4"></video>
+                    <video autoplay loop muted plays-inline src="videos/glob.mp4"></video>
                     <button><i class='bx bx-send'></i> Contact Me</button>
                 </div>
 
@@ -140,8 +137,7 @@
 
             <div class="project-card">
                 <div class="project-vidbox autoBlur">
-                    <video loop id="projectVideo2" preload="metadata" loading="lazy"
-                        src="videos/project2.mp4"></video>
+                    <video loop id="projectVideo2" preload="metadata" loading="lazy" src="videos/project2.mp4"></video>
                 </div>
                 <div class="project-info fadein-left">
                     <h1>FarmByte <span class="gradient">AI Platform</span></h1>
@@ -154,8 +150,7 @@
 
             <div class="project-card">
                 <div class="project-vidbox autoBlur">
-                    <video loop id="projectVideo3" preload="metadata" loading="lazy"
-                        src="videos/project3.mp4"></video>
+                    <video loop id="projectVideo3" preload="metadata" loading="lazy" src="videos/project3.mp4"></video>
                 </div>
 
                 <div class="project-info fadein-left">
@@ -303,7 +298,7 @@
                         nakuldesai2006@gmail.com</a>
                 </div>
                 <div class="contact-box">
-                    <form id="contactForm" method="POST" action="{{ url_for('contact') }}">
+                    <form id="contactForm" method="POST" action="/send-email">
                         <div class="input-group">
                             <label for="name">Your Name</label>
                             <input type="text" id="name" name="name" placeholder="Enter your name" required>
@@ -336,13 +331,12 @@
 
 
     </div>
-    <script src="js/config.js"></script>
     <script src="js/app.js"></script>
     <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"></script>
     <script>
         AOS.init();
     </script>
+    
 
 </body>
 
