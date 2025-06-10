@@ -36,6 +36,94 @@ closeIcon.addEventListener("click", function(){
     
 })
 
+// Intersection Observer for scroll animations
+document.addEventListener('DOMContentLoaded', function() {
+    // Auto Blur Animation
+    const autoBlurElements = document.querySelectorAll('.autoBlur');
+    const autoBlurObserver = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            const element = entry.target;
+            const progress = entry.intersectionRatio;
+            
+            if (entry.isIntersecting) {
+                // Calculate blur and opacity based on scroll progress
+                const blurValue = Math.max(0, 40 - (progress * 40));
+                const opacityValue = progress > 0.3 ? 1 : progress;
+                
+                element.style.filter = `blur(${blurValue}px)`;
+                element.style.opacity = opacityValue;
+            } else {
+                element.style.filter = 'blur(40px)';
+                element.style.opacity = 0;
+            }
+        });
+    }, {
+        threshold: [0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9, 1],
+        rootMargin: '0px 0px -100px 0px'
+    });
+
+    autoBlurElements.forEach(el => autoBlurObserver.observe(el));
+
+    // Auto Display Animation
+    const autoDisplayElements = document.querySelectorAll('.autoDisplay');
+    const autoDisplayObserver = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            const element = entry.target;
+            const progress = entry.intersectionRatio;
+            
+            if (entry.isIntersecting) {
+                // Animate from initial state to final state
+                const blurValue = Math.max(0, 10 - (progress * 10));
+                const scaleValue = 0 + (progress * 1);
+                const translateYValue = -200 + (progress * 200);
+                const opacityValue = progress;
+                
+                element.style.filter = `blur(${blurValue}px)`;
+                element.style.transform = `translateY(${translateYValue}px) scale(${scaleValue})`;
+                element.style.opacity = opacityValue;
+            } else {
+                element.style.filter = 'blur(10px)';
+                element.style.transform = 'translateY(-200px) scale(0)';
+                element.style.opacity = 0;
+            }
+        });
+    }, {
+        threshold: [0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9, 1],
+        rootMargin: '0px 0px -50px 0px'
+    });
+
+    autoDisplayElements.forEach(el => autoDisplayObserver.observe(el));
+
+    // Fade In Left Animation
+    const fadeInLeftElements = document.querySelectorAll('.fadein-left');
+    const fadeInLeftObserver = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            const element = entry.target;
+            const progress = entry.intersectionRatio;
+            
+            if (entry.isIntersecting) {
+                // Animate from left to center
+                const translateXValue = -500 + (progress * 500);
+                const scaleValue = 0.2 + (progress * 0.8);
+                const blurValue = Math.max(0, 10 - (progress * 10));
+                const opacityValue = progress;
+                
+                element.style.transform = `translateX(${translateXValue}px) scale(${scaleValue})`;
+                element.style.filter = `blur(${blurValue}px)`;
+                element.style.opacity = opacityValue;
+            } else {
+                element.style.transform = 'translateX(-500px) scale(0.2)';
+                element.style.filter = 'blur(10px)';
+                element.style.opacity = 0;
+            }
+        });
+    }, {
+        threshold: [0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9, 1],
+        rootMargin: '0px 0px -50px 0px'
+    });
+
+    fadeInLeftElements.forEach(el => fadeInLeftObserver.observe(el));
+});
 
 document.addEventListener('DOMContentLoaded', function () {
     const contactForm = document.getElementById('contactForm');
