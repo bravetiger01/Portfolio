@@ -113,29 +113,49 @@ header {
 
 header ul {
     display: flex;
-    justify-content: space-between;
-    width: 30%;
-    padding: 15px 15px;
-    border-radius: 50px;
-    background-color: rgba(0, 0, 69, 0.326);
-    backdrop-filter: blur(10px);
-    box-shadow: 0 0 10px #72a1de63;
+    align-items: center;
+    gap: 32px; /* space between links */
+    list-style: none;
+    margin: 0;
+    padding: 0;
 }
 
 header ul li {
-    list-style: none;
+    margin: 0;
+    padding: 0;
 }
 
-header ul a {
-    text-decoration: none;
-    color: white;
+header ul li a {
+    color: #fff;
     font-weight: 700;
-    transition: 0.3s;
-    margin: 0 10px;
+    text-decoration: none;
+    font-size: 1.2rem;
+    padding: 6px 16px;
+    border-radius: 6px;
+    transition: background 0.2s, color 0.2s;
+    white-space: nowrap; /* Prevents text from wrapping */
 }
 
-header ul a:hover {
-    text-shadow: 0 0 15px black;
+header ul li a:hover,
+header ul li a:focus {
+    background: #72a1dea2;
+    color: #fff;
+}
+
+header ul li a.download-btn {
+    background: #72a1dea2;
+    color: #fff;
+    border-radius: 6px;
+    font-weight: 700;
+    margin-left: 10px;
+    white-space: nowrap;
+    transition: background 0.2s, color 0.2s;
+}
+
+header ul li a.download-btn:hover,
+header ul li a.download-btn:focus {
+    background: #4e7ac7;
+    color: #fff;
 }
 
 .box-icons {
