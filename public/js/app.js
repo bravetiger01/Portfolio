@@ -1,40 +1,36 @@
-const video1 = document.getElementById('projectVideo1');
-const video2 = document.getElementById('projectVideo2');
-const video3 = document.getElementById('projectVideo3');
-const video4 = document.getElementById('projectVideo4');
+// Select all videos dynamically
+const videos = document.querySelectorAll('.project-vidbox video');
 
-// Sidebar elements //
-const sideBar = document.querySelector('.sidebar');
-const menu = document.querySelector('.menu-icon');
-const closeIcon = document.querySelector('.close-icon')
-
-
-const hoverSign = document.querySelector('.hover-sign');
-
-const videoList =[video1, video2, video3, video4];
-
-videoList.forEach (function(video){
-    video.addEventListener("mouseover", function(){
-        video.play()
-        hoverSign.classList.add("active")
-    })
-    video.addEventListener("mouseout", function(){
-    video.pause();
-    hoverSign.classList.remove("active")
-})
-})
-
-// Sidebar elements //
-menu.addEventListener("click", function(){
-    sideBar.classList.remove("close-sidebar")
-    sideBar.classList.add("open-sidebar")
+videos.forEach(function(video) {
+    const hoverSign = video.closest('.project-vidbox').querySelector('.hover-sign'); // Get the hover-sign for this video
+    video.addEventListener("mouseover", function() {
+        video.play();
+        if (hoverSign) {
+            hoverSign.classList.add("active");
+        }
+    });
+    video.addEventListener("mouseout", function() {
+        video.pause();
+        if (hoverSign) {
+            hoverSign.classList.remove("active");
+        }
+    });
 });
 
-closeIcon.addEventListener("click", function(){
+// Sidebar elements
+const sideBar = document.querySelector('.sidebar');
+const menu = document.querySelector('.menu-icon');
+const closeIcon = document.querySelector('.close-icon');
+
+menu.addEventListener("click", function() {
+    sideBar.classList.remove("close-sidebar");
+    sideBar.classList.add("open-sidebar");
+});
+
+closeIcon.addEventListener("click", function() {
     sideBar.classList.remove("open-sidebar");
     sideBar.classList.add("close-sidebar");
-    
-})
+});
 
 // Intersection Observer for scroll animations
 document.addEventListener('DOMContentLoaded', function() {
@@ -46,10 +42,8 @@ document.addEventListener('DOMContentLoaded', function() {
             const progress = entry.intersectionRatio;
             
             if (entry.isIntersecting) {
-                // Calculate blur and opacity based on scroll progress
                 const blurValue = Math.max(0, 40 - (progress * 40));
                 const opacityValue = progress > 0.3 ? 1 : progress;
-                
                 element.style.filter = `blur(${blurValue}px)`;
                 element.style.opacity = opacityValue;
             } else {
@@ -72,12 +66,10 @@ document.addEventListener('DOMContentLoaded', function() {
             const progress = entry.intersectionRatio;
             
             if (entry.isIntersecting) {
-                // Animate from initial state to final state
                 const blurValue = Math.max(0, 10 - (progress * 10));
                 const scaleValue = 0 + (progress * 1);
                 const translateYValue = -200 + (progress * 200);
                 const opacityValue = progress;
-                
                 element.style.filter = `blur(${blurValue}px)`;
                 element.style.transform = `translateY(${translateYValue}px) scale(${scaleValue})`;
                 element.style.opacity = opacityValue;
@@ -102,12 +94,10 @@ document.addEventListener('DOMContentLoaded', function() {
             const progress = entry.intersectionRatio;
             
             if (entry.isIntersecting) {
-                // Animate from left to center
                 const translateXValue = -500 + (progress * 500);
                 const scaleValue = 0.2 + (progress * 0.8);
                 const blurValue = Math.max(0, 10 - (progress * 10));
                 const opacityValue = progress;
-                
                 element.style.transform = `translateX(${translateXValue}px) scale(${scaleValue})`;
                 element.style.filter = `blur(${blurValue}px)`;
                 element.style.opacity = opacityValue;
