@@ -4,11 +4,62 @@ body {
     font-family: Arial, Helvetica, sans-serif;
     color: lightgray;
     overflow-x: hidden;
+    cursor: none; 
 }
 
 html {
     scroll-behavior: smooth;
     overflow-x: hidden;
+}
+
+/* Custom cursor styles */
+.custom-cursor {
+    position: fixed;
+    width: 20px;
+    height: 20px;
+    background: linear-gradient(45deg, #4285f4, #7c3aed);
+    border-radius: 50%;
+    pointer-events: none;
+    z-index: 9999;
+    mix-blend-mode: difference;
+    transition: transform 0.1s ease;
+    transform-origin: center;
+}
+
+.cursor-trail {
+    position: fixed;
+    width: 8px;
+    height: 8px;
+    background: rgba(66, 133, 244, 0.4);
+    border-radius: 50%;
+    pointer-events: none;
+    z-index: 9998;
+    transition: all 0.3s ease;
+}
+
+/* Directional arrow for cursor */
+.cursor-arrow {
+    position: fixed;
+    width: 24px;
+    height: 24px;
+    pointer-events: none;
+    z-index: 10000;
+    transition: all 0.2s ease;
+    opacity: 0.8;
+}
+
+.cursor-arrow::before {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 0;
+    height: 0;
+    border-left: 8px solid transparent;
+    border-right: 8px solid transparent;
+    border-bottom: 12px solid #4285f4;
+    transform: translate(-50%, -50%);
+    filter: drop-shadow(0 0 4px rgba(66, 133, 244, 0.6));
 }
 
 .container {
@@ -177,14 +228,137 @@ header ul a:hover {
         }
     }
 
-    .skills-video-box{
-        position: absolute;
-        right: 3%;
+    /* Profile image container */
+    .profile-image-box {
+        position: relative;
+        width: 250px;
+        height: 250px;
+        margin: 2rem;
+        left: 70%;
     }
 
-    .skills-video{
-        height: 900px;
-        mix-blend-mode:lighten;
+    /* Animated gradient border */
+    .profile-image-box::before {
+        content: '';
+        position: absolute;
+        top: -4px;
+        left: -4px;
+        right: -4px;
+        bottom: -4px;
+        background: linear-gradient(45deg, 
+            #4285f4, #7c3aed, #ec4899, #4285f4, #7c3aed);
+        background-size: 300% 300%;
+        border-radius: 50%;
+        z-index: -1;
+        animation: gradientRotate 3s ease-in-out infinite;
+        filter: blur(1px);
+    }
+
+    /* Profile image styling */
+    .profile-image {
+        width: 100%;
+        height: 100%;
+        border-radius: 50%;
+        border: 3px solid rgba(255, 255, 255, 0.1);
+        transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+        position: relative;
+        z-index: 1;
+        background: linear-gradient(135deg, #4285f4 0%, #7c3aed 100%);
+        overflow: hidden;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        color: white;
+        font-size: 1.2rem;
+        font-weight: bold;
+    }
+
+    /* Actual image inside the container */
+    .profile-image img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        border-radius: 50%;
+        display: block;
+        position: absolute;
+        top: 0;
+        left: 0;
+    }
+
+
+    /* Hover effects for profile image */
+    .profile-image-box:hover .profile-image {
+        transform: scale(1.1);
+        box-shadow: 
+            0 0 30px rgba(66, 133, 244, 0.4),
+            0 0 60px rgba(124, 58, 237, 0.3),
+            inset 0 0 20px rgba(255, 255, 255, 0.1);
+    }
+
+    .profile-image-box:hover::before {
+        animation-duration: 1s;
+        filter: blur(0px);
+    }
+
+    /* Pulsing animation for the border */
+    @keyframes gradientRotate {
+        0% {
+            background-position: 0% 50%;
+            transform: rotate(0deg) scale(1);
+        }
+        50% {
+            background-position: 100% 50%;
+            transform: rotate(180deg) scale(1.05);
+        }
+        100% {
+            background-position: 0% 50%;
+            transform: rotate(360deg) scale(1);
+        }
+    }
+
+    /* Responsive design */
+    @media (max-width: 768px) {
+        .profile-image-box {
+            width: 150px;
+            height: 150px;
+        }
+        
+        .demo-content h1 {
+            font-size: 2rem;
+        }
+        
+        .container {
+            padding: 1rem;
+        }
+    }
+
+    @media (max-width: 480px) {
+        .profile-image-box {
+            width: 120px;
+            height: 120px;
+        }
+        
+        .demo-content h1 {
+            font-size: 1.5rem;
+        }
+    }
+
+    /* Accessibility improvements */
+    @media (prefers-reduced-motion: reduce) {
+        .profile-image-box::before,
+        .floating-icon,
+        .custom-cursor,
+        .cursor-trail,
+        .cursor-arrow {
+            animation: none;
+            transition: none;
+        }
+    }
+
+    /* Focus styles for accessibility */
+    .profile-image-box:focus {
+        outline: 2px solid #4285f4;
+        outline-offset: 4px;
     }
 
 
@@ -239,110 +413,180 @@ header ul a:hover {
 
 
 
-.info-section {
-    display: flex;
-    align-items: center;
-    flex-direction: column;
-    width: 80%;
-    margin-top: 50px;
-}
+    .info-section {
+        display: flex;
+        align-items: center;
+        flex-direction: column;
+        width: 80%;
+        margin: 50px auto 0;
+    }
 
-.info-cards {
-    display: grid;
-    grid-template-columns: auto auto auto;
-    gap: 15px;
-    width: 100%;
-    margin-top: 20px;
-}
+    .section-title {
+        color: white;
+        font-size: 2.5rem;
+        margin-bottom: 30px;
+        text-align: center;
+    }
 
-.card {
-    position: relative;
-    display: flex;
-    flex-direction: column;
-    padding: 20px;
-    width: auto;
-    height: auto;
-    min-height: 300px;
-    overflow: hidden;
-    border: 1px solid rgba(255, 255, 255, 0.2);
-    background-color: rgba(8, 0, 32, 0.8);
-    border-radius: 20px;
-    transition: 0.5s;
-}
+    .info-cards {
+        display: grid;
+        grid-template-columns: 1fr 1fr 1fr;
+        gap: 15px;
+        width: 100%;
+        margin-top: 20px;
+        /* Set specific grid areas for better control */
+        grid-template-areas: 
+            "intro education professional"
+            "journey journey professional";
+    }
 
-.card h1 {
-    margin: 0 0 15px 0;
-    font-size: 25px;
-    color: white;
-    z-index: 2;
-    position: relative;
-}
+    .card {
+        position: relative;
+        display: flex;
+        flex-direction: column;
+        padding: 20px;
+        width: auto;
+        height: fit-content; /* Changed from auto to fit-content */
+        min-height: 180px; /* Reduced from 300px to 180px */
+        max-height: 250px; /* Added max-height to prevent excessive growth */
+        overflow: hidden;
+        border: 1px solid rgba(255, 255, 255, 0.2);
+        background-color: rgba(8, 0, 32, 0.8);
+        border-radius: 20px;
+        transition: 0.5s;
+    }
 
-.card p {
-    color: white;
-    font-size: 15px;
-    line-height: 24px;
-    margin-bottom: auto;
-    z-index: 2;
-    position: relative;
-    opacity: 0.9;
-}
+    .card h1 {
+        margin: 0 0 12px 0; /* Reduced margin */
+        font-size: 22px; /* Slightly smaller font */
+        color: white;
+        z-index: 2;
+        position: relative;
+    }
 
-.card img {
-    position: absolute;
-    top: 0;
-    right: 0;
-    width: 50%;
-    height: 100%;
-    object-fit: cover;
-    opacity: 0.3;
-    z-index: 1;
-}
+    .card p {
+        color: white;
+        font-size: 14px; /* Slightly smaller font */
+        line-height: 20px; /* Reduced line height */
+        margin-bottom: auto;
+        z-index: 2;
+        position: relative;
+        opacity: 0.9;
+        flex-grow: 1; /* Allow text to take available space */
+    }
 
-.card video {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    mix-blend-mode: lighten;
-    opacity: 0.2;
-    z-index: 1;
-}
+    /* Optimized background images - smaller and more subtle */
+    .card img {
+        position: absolute;
+        top: 0;
+        right: 0;
+        width: 40%; /* Reduced from 50% */
+        height: 60%; /* Reduced from 100% */
+        object-fit: cover;
+        opacity: 0.3; /* Reduced opacity */
+        z-index: 1;
+        object-position: center;
+    }
 
-.card button {
-    padding: 10px 25px;
-    border: 1px solid gray;
-    background-color: #0f1217;
-    color: gray;
-    border-radius: 20px;
-    box-shadow: 0 0 5px lightgray;
-    cursor: pointer;
-    transition: 0.3s;
-    margin-top: auto;
-    align-self: flex-start;
-    z-index: 2;
-    position: relative;
-}
+    /* Optimized background video - smaller and more subtle */
+    .card video {
+        position: absolute;
+        top: 0;
+        right: 0;
+        width: 60%; /* Reduced from 100% */
+        height: 70%; /* Reduced from 100% */
+        object-fit: cover;
+        mix-blend-mode: lighten;
+        opacity: 0.15; /* Reduced opacity */
+        z-index: 1;
+    }
 
-.card button:hover {
-    box-shadow: 0 0 15px lightgray;
-    opacity: 0.7;
-}
+    .card button {
+        padding: 8px 20px; /* Slightly smaller padding */
+        border: 1px solid gray;
+        background-color: #0f1217;
+        color: gray;
+        border-radius: 20px;
+        box-shadow: 0 0 5px lightgray;
+        cursor: pointer;
+        transition: 0.3s;
+        margin-top: 15px; /* Reduced margin */
+        align-self: flex-start;
+        z-index: 2;
+        position: relative;
+        font-size: 14px;
+    }
 
-.card:hover {
-    box-shadow: 0 0 15px rgb(211, 211, 211);
-}
+    .card button:hover {
+        box-shadow: 0 0 15px lightgray;
+        opacity: 0.7;
+    }
 
-.card:nth-child(3) {
-    grid-row: span 2;
-    height: 83vh;
-}
+    .card:hover {
+        box-shadow: 0 0 15px rgb(211, 211, 211);
+        transform: translateY(-2px); /* Subtle lift effect */
+    }
 
-.card:nth-child(4) {
-    grid-column: span 2;
-}
+    /* Specific card positioning using grid areas */
+    .card:nth-child(1) {
+        grid-area: intro;
+    }
+
+    .card:nth-child(2) {
+        grid-area: education;
+    }
+
+    .card:nth-child(3) {
+        grid-area: professional;
+        min-height: 300px; /* Taller for professional summary */
+        max-height: 400px;
+    }
+
+    .card:nth-child(4) {
+        grid-area: journey;
+        min-height: 160px; /* Shorter for journey card */
+    }
+
+    /* Responsive design */
+    @media (max-width: 1024px) {
+        .info-cards {
+            grid-template-columns: 1fr 1fr;
+            grid-template-areas: 
+                "intro education"
+                "professional professional"
+                "journey journey";
+        }
+        
+        .card:nth-child(3) {
+            min-height: 200px;
+            max-height: 250px;
+        }
+    }
+
+    @media (max-width: 768px) {
+        .info-section {
+            width: 95%;
+        }
+        
+        .info-cards {
+            grid-template-columns: 1fr;
+            grid-template-areas: 
+                "intro"
+                "education"
+                "professional"
+                "journey";
+        }
+        
+        .card {
+            min-height: 150px;
+            max-height: 200px;
+        }
+        
+        .card:nth-child(3) {
+            min-height: 180px;
+            max-height: 220px;
+        }
+    }
 
 .my-project {
     display: flex;

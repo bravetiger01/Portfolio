@@ -11,6 +11,16 @@
 </head>
 
 <body>
+    <!-- Custom cursor elements -->
+    <div class="custom-cursor"></div>
+    <div class="cursor-arrow"></div>
+
+    <!-- Cursor trail elements (multiple for smoother effect) -->
+    <div class="cursor-trail"></div>
+    <div class="cursor-trail"></div>
+    <div class="cursor-trail"></div>
+    <div class="cursor-trail"></div>
+    <div class="cursor-trail"></div>
     <div class="container">
         <video class="back-vid" autoplay loop muted playsinline preload="auto" src="videos/galaxy.mp4"></video>
 
@@ -68,14 +78,15 @@
                 <p>I'm a Full Stack Web Developer, App Developer, and AI Explorer passionate about building innovative
                     tech solutions that make a real-world impact. Currently pursuing BE in IT at SVIT, Vasad.</p>
 
-                <button><i class='bx bx-send'></i> Contact Me</button>
+                <button><i class='bx bx-send' onclick="window.location.href='#contact'"> Contact Me</i></button>
             </div>
 
-            <div class="skills-video-box ">
-                <video class="skills-video" autoplay loop muted plays-inline src="videos/hero-video.mp4"></video>
+            <!-- Profile image component -->
+            <div class="profile-image-box" tabindex="0" role="button" aria-label="Profile image with hover effects">
+                <div class="profile-image">
+                    <img src="images/profilePic.jpg" alt="Profile Image">
+                </div>
             </div>
-
-            <div class="scroll-down"></div>
         </section>
 
         <section class="info-section" id="about">
@@ -103,7 +114,7 @@
                         multiple priorities and taking on added responsibilities to meet team goals. Passionate about
                         leveraging technical expertise to secure an entry-level web developer position.</p>
                     <video autoplay loop muted plays-inline src="videos/glob.mp4"></video>
-                    <button><i class='bx bx-send'></i> Contact Me</button>
+                    <button><i class='bx bx-send' onclick="window.location.href='#contact'"> Contact Me</i></button>
                 </div>
 
                 <div class="card">
@@ -326,17 +337,18 @@
         </section>
 
         <section class="footer">
-            <h1>©️2024, Made with ❤️ by Nakul Desai</h1>
+            <h1>©️2025, Made with ❤️ by Nakul Desai</h1>
         </section>
 
 
     </div>
     <script src="js/app.js"></script>
+    <script src="js/profile.js"></script>
     <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
     <script>
         AOS.init();
     </script>
-    
+
 
 </body>
 
